@@ -1,40 +1,52 @@
 import { useState } from "react";
 
-export default function Calculator({ onChangeInvestments }) {
-  const [investment, setInvestments] = useState();
-
+export default function Calculator({ onChangeInvestments, userInput }) {
   return (
-    <div id="user-input" className="input-group">
-      <div>
-        <label>INITIAL INVESTMENT</label>
-        <input
-          type="number"
-          value={initialInvest}
-          onChange={(initialInvest) => handleInvestments}
-        />
-
-        <label>ANNUAL INVESTMENT</label>
-        <input
-          type="number"
-          value={annualInvest}
-          onChange={(annualInvest) => handleInvestments}
-        />
+    <div id="user-input">
+      <div className="input-group">
+        <p>
+          <label>INITIAL INVESTMENT</label>
+          <input
+            type="number"
+            name="initialInvestment"
+            value={userInput.initialInvestment}
+            onChange={(event) => onChangeInvestments(event)}
+            required
+          />
+        </p>
+        <p>
+          <label>EXPECTED RETURN</label>
+          <input
+            type="number"
+            name="expectedReturn"
+            value={userInput.expectedReturn}
+            onChange={(event) => onChangeInvestments(event)}
+            required
+          />
+        </p>
       </div>
 
-      <div>
-        <label>EXPECTED RETURN</label>
-        <input
-          type="number"
-          value={expectedReturn}
-          onChange={(expectedReturn) => handleInvestments}
-        />
-
-        <label>DURATION</label>
-        <input
-          type="number"
-          value={duration}
-          onChange={(duration) => handleInvestments}
-        />
+      <div className="input-group">
+        <p>
+          <label>ANNUAL INVESTMENT</label>
+          <input
+            type="number"
+            name="annualInvestment"
+            value={userInput.annualInvestment}
+            onChange={(event) => onChangeInvestments(event)}
+            required
+          />
+        </p>
+        <p>
+          <label>DURATION</label>
+          <input
+            type="number"
+            name="duration"
+            value={userInput.duration}
+            onChange={(event) => onChangeInvestments(event)}
+            required
+          />
+        </p>
       </div>
     </div>
   );
